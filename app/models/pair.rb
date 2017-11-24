@@ -1,24 +1,24 @@
 class Pair < ApplicationRecord
-belongs_to :user
+  belongs_to :user
+  # require 'date'
 
-  @students = User.where(is_admin:false)
+  def self.generate_pairs
+    @students = User.where(is_admin:false)
 
-  def generate_pairs
-    @students = []
+    students = @students.dup.shuffle
+    fixed_student = students.pop
+    tomorrow = Date.today + 1
 
-    student = @students.dup
-    fixed_student = student.shuffle!.pop
-
-    student.size.times do |x|
-      puts "Day #{x+1}"
-      two_rows = [[fixed_student]+student[0..student.size/2-1],
-      student[student.size/2..-1].reverse]
+    students.size.times do |i|
+      puts "#{tomorrow + i}"
+      two_rows = [[fixed_student]+students[0..students.size/2-1],
+      students[students.size/2..-1].reverse]
       pairs = two_rows.transpose.shuffle
-      pairs.each do {|i| p i}
-        student.rotate!
-        puts student
-      end
+      pairs.each {|x| p x}
+      students.rotate!
+      puts @students
+    end
 
   end
 
-  end
+end
