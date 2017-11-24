@@ -1,4 +1,5 @@
 class Pair < ApplicationRecord
+
   belongs_to :user
   # require 'date'
 
@@ -20,5 +21,4 @@ class Pair < ApplicationRecord
     end
 
   end
-
 end

@@ -2,6 +2,7 @@ User.destroy_all
 Pair.destroy_all
 
 #Users
+
 User.create!(
   email: "anna@email.com",
   name: "Anna",
