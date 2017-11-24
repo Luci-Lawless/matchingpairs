@@ -3,8 +3,8 @@ class PairsController < ApplicationController
   before_action :set_authorization
 
   def index
-    # @user = current_user.pair
-    # current_user_pair = get_current_user_pair
+    @user = current_user.pair
+    
   end
   def show
     @pairs = Pairs.all
